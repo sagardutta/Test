@@ -7,7 +7,7 @@
 		<g:message code="question.category.label" default="Category" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="category" name="category.id" from="${shuriken.QuestionCategory.list()}" optionKey="id" required="" value="${questionInstance?.category?.id}" class="many-to-one"/>
+	<g:select id="category" name="category.id" from="${shuriken.QuestionCategory.list()}" optionKey="id" optionValue="${{it.category?.toUpperCase()}}" required="" value="${questionInstance?.category?.category}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'choices', 'error')} ">
@@ -15,7 +15,7 @@
 		<g:message code="question.choices.label" default="Choices" />
 		
 	</label>
-	<g:select name="choices" from="${shuriken.ResponseChoice.list()}" multiple="multiple" optionKey="id" size="5" value="${questionInstance?.choices*.id}" class="many-to-many"/>
+	<g:select name="choices" from="${shuriken.ResponseChoice.list()}" multiple="multiple" optionKey="id" optionValue="${{it.choice?.toUpperCase()}}" size="5" value="${questionInstance?.choices*.choices}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'created', 'error')} required">
