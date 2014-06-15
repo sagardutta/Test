@@ -15,7 +15,7 @@
 		<g:message code="question.choices.label" default="Choices" />
 		
 	</label>
-	<g:select name="choices" from="${shuriken.ResponseChoice.list()}" multiple="multiple" optionKey="id" optionValue="${{it.choice?.toUpperCase()}}" size="5" value="${questionInstance?.choices*.choices}" class="many-to-many"/>
+	<g:select name="choices" from="${shuriken.ResponseChoice.list()}" multiple="multiple" optionKey="id" optionValue="${{it.choice?.toUpperCase()}}" size="5" value="${questionInstance?.choices*.choice}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: questionInstance, field: 'created', 'error')} required">

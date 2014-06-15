@@ -6,4 +6,7 @@ class ResponseChoice {
     }
 	String choice
 	ResponseCategory category
+	String toString() {
+        return choice
+    }
 }

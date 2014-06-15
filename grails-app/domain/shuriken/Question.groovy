@@ -10,4 +10,8 @@ class Question {
   String text
   Date created
   
+  String toString() {
+        return text
+    }
+  
 }
