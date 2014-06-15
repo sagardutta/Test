@@ -1,10 +1,14 @@
 package shuriken
 
 import org.springframework.dao.DataIntegrityViolationException
+import javax.annotation.PostConstruct
+
 
 class QuestionCategoryController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	
 
     def index() {
         redirect(action: "list", params: params)
