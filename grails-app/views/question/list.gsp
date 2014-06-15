@@ -41,6 +41,22 @@
 						<td><g:formatDate date="${questionInstance.created}" /></td>
 					
 						<td>${fieldValue(bean: questionInstance, field: "text")}</td>
+
+                        <td>
+                        <g:if test="${questionInstance?.choices}">
+                            <span id="choices-label" class="property-label"><g:message code="question.choices.label" default="Choices" /></span>
+
+
+
+                                <g:each in="${questionInstance.choices}" var="c">
+                                    <li >
+                                  <span class="property-value" aria-labelledby="choices-label"><g:link controller="responseChoice" action="show" id="${c.id}">${c?.toString()}</g:link></span>
+                                    </li>
+                                </g:each>
+
+
+                        </g:if>
+                        </td>
 					
 					</tr>
 				</g:each>
