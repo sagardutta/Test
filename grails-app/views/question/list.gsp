@@ -24,8 +24,9 @@
 				<thead>
 					<tr>
 					
-						<th><g:message code="question.category.label" default="Category" /></th>
-					
+						<th><g:message code="question.category.label" default="Select" />
+                            <g:message code="question.category.label" default="Category" />
+                        </th>
 						<g:sortableColumn property="created" title="${message(code: 'question.created.label', default: 'Created')}" />
 					
 						<g:sortableColumn property="text" title="${message(code: 'question.text.label', default: 'Text')}" />
@@ -35,7 +36,7 @@
 				<tbody>
 				<g:each in="${questionInstanceList}" status="i" var="questionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+                        <td><g:checkBox name="selectedQuestions" id="${questionInstance?.id}"></g:checkBox></td>
 						<td><g:link action="show" id="${questionInstance.id}">${fieldValue(bean: questionInstance, field: "category")}</g:link></td>
 					
 						<td><g:formatDate date="${questionInstance.created}" /></td>
