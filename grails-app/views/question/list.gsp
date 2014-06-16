@@ -34,9 +34,11 @@
 					</tr>
 				</thead>
 				<tbody>
+                <g:form controller="list" action="create">
 				<g:each in="${questionInstanceList}" status="i" var="questionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                        <td><g:checkBox name="selectedQuestions" id="${questionInstance?.id}"></g:checkBox></td>
+
+                        <td><g:checkBox name="selectedQuestions" value="${questionInstance?.id}" checked="false"></g:checkBox></td>
 						<td><g:link action="show" id="${questionInstance.id}">${fieldValue(bean: questionInstance, field: "category")}</g:link></td>
 					
 						<td><g:formatDate date="${questionInstance.created}" /></td>
@@ -61,6 +63,8 @@
 					
 					</tr>
 				</g:each>
+                    <g:submitButton name="createSurvey" />
+                        </g:form>
 				</tbody>
 			</table>
 			<div class="pagination">

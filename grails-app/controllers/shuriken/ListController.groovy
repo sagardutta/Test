@@ -8,6 +8,15 @@ class ListController {
 	render (view:"login")
 	 }
 
+    def create(){
+        def selectedQuestions = params["selectedQuestions"]
+        def questions = []
+        for (i in selectedQuestions){
+             questions.add(Question.get(i))
+        }
+        [questionInstanceList:questions]
+    }
+
 	def first(){
 	render (view:"first")	
 	}
