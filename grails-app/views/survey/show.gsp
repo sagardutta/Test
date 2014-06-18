@@ -20,11 +20,19 @@
         <div class="container">
             <div class="row">
                 <form id="survey" class="formoid-solid-dark" style="background-color:#FFFFFF;font-size:14px;font-family:'Palatino Linotype','Book Antiqua',Palatino,serif;color:#34495E;max-width:680px;min-width:150px" method="post">
-                    <div class="title"><h2>Patient Quality of Stay Survey</h2></div>
-                    <br/>
-                    <div class="element-name"><label class="title"></label><span class="nameFirst"><input placeholder="Name First" type="text" size="8" name="name[first]" /><span class="icon-place"></span></span><span class="nameLast"><input placeholder="Name Last" type="text" size="14" name="name[last]" /><span class="icon-place"></span></span></div>
-                    <div class="element-date"><label class="title"></label><div class="item-cont"><input class="large" data-format="yyyy-mm-dd" type="date" name="date" placeholder="Date"/><span class="icon-place"></span></div></div>
-                    <br/>
+                    <g:each in="${categories}" var="category">
+                        <h3>${category}</h3>
+                        <g:each in="${categoryMap.get(category)}" var="question">
+
+                            <div class="element-radio"><label class="title">${question}</label>
+                            <g:each in="${question.choices}" var="choice">
+
+                            <div class="column column1"><label><input type="radio" name="radio1" value="${choice}" /><span>${choice}</span><span class="clearfix"></span>
+                            </g:each>
+
+                        </g:each>
+                    </g:each>
+
 
                     <div><h3>ADMISSIONS</h3></div>
                     <div class="element-radio"><label class="title">1. Were you greeted by a nurse when you arrived in your room?</label>		<div class="column column1"><label><input type="radio" name="radio1" value="Immediately" /><span>Immediately</span></label><label><input type="radio" name="radio1" value="Short wait" /><span>Short wait</span></label><label><input type="radio" name="radio1" value="After a while" /><span>After a while</span></label><label><input type="radio" name="radio1" value="Long wait" /><span>Long wait</span></label><label><input type="radio" name="radio1" value="No" /><span>No</span></label></div><span class="clearfix"></span>

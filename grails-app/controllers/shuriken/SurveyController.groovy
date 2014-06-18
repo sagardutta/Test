@@ -38,7 +38,27 @@ class SurveyController {
             return
         }
 
-        [surveyInstance: surveyInstance]
+       def questions =  surveyInstance.questions
+        def categories = [] as Set
+        for(Question question:questions){
+            def category = question.category.toString()
+            categories.add(category)
+        }
+
+        def categoryMap = [:]
+
+        for(String category:categories){
+            categoryMap[category.toString()] = []
+        }
+
+        for(Question question:surveyInstance.questions){
+            def cat = question.category.toString()
+            def list = categoryMap.get(cat)
+            list.add(question)
+            categoryMap.put(cat, list)
+        }
+
+        [surveyInstance: surveyInstance, categories:categories, categoryMap:categoryMap]
     }
 
     def edit(Long id) {
